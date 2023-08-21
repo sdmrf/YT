@@ -1,35 +1,36 @@
-import styled from 'styled-components'
+import styled, { ThemeProvider } from "styled-components";
 
 //Components
-import Menu from './Components/Menu'
-import Navbar from './Components/Navbar'
-
+import Menu from "./Components/Menu";
+import Navbar from "./Components/Navbar";
+import { DarkTheme, LightTheme } from "./Utils/Themes";
+import { useState } from "react";
 
 //Styles
 const Container = styled.div`
-display: flex;
-`
+  display: flex;
+  background-color: ${({ theme }) => theme.LightBgColor};
+`;
 
 const Main = styled.div`
-flex: 7;
-
-`
-const Wrapper = styled.div`
-
-`
+  flex: 7;
+`;
+const Wrapper = styled.div``;
 
 const App = () => {
-  return (
-    <Container>
-    <Menu />
-      <Main>
-        <Navbar />
-        <Wrapper>
-          YTC
-        </Wrapper>
-      </Main>
-    </Container>
-  )
-}
+  const [DarkMode, setDarkMode] = useState(true);
 
-export default App
+  return (
+    <ThemeProvider theme={DarkMode ? DarkTheme : LightTheme}>
+      <Container>
+        <Menu setDarkMode={setDarkMode} DarkMode={DarkMode} />
+        <Main>
+          <Navbar />
+          <Wrapper>YTC</Wrapper>
+        </Main>
+      </Container>
+    </ThemeProvider>
+  );
+};
+
+export default App;

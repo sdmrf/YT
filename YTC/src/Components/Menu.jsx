@@ -18,15 +18,21 @@ import HelpIcon from "@mui/icons-material/Help";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import SportsMotorsportsIcon from "@mui/icons-material/SportsMotorsports";
 
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+
 //Styles
 const Container = styled.div`
   flex: 1;
   height: 100vh;
-  background-color: #202020;
-  color: white;
+  background-color: ${({ theme }) => theme.BgColor};
+  color: ${({ theme }) => theme.Color};
   font-size: 14px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  padding : 15px 0;
 `;
 const Wrapper = styled.div`
   padding: 18px 26px;
@@ -53,15 +59,75 @@ const Item = styled.div`
   border-radius: 5px;
   margin-bottom: 5px;
   transition: all 0.3s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.Soft};
+    color: ${({ theme }) => theme.TextLight};
+  }
 `;
 
-const Menu = () => {
+const Title = styled.h2`
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: ${({ theme }) => theme.TextLight};
+  
+`
+
+const Hr = styled.hr`
+  margin: 10px 0px;
+  border: 1px solid ${({ theme }) => theme.Soft};
+`;
+
+const Login = styled.div`
+  color: ${({ theme }) => theme.TextLight};
+  margin: 10px 0px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #3c3b3b;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #3c3b3b;
+    color: white;
+  }
+`;
+const Button = styled.button`
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  gap: 5px;
+
+  border: none;
+  border-radius: 25px;
+  background-color: transparent;
+  border: 1px solid #717171;
+  color: #3ea6ff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 12px;
+
+  &:hover {
+    background-color: #3ea6ff;
+    color: white;
+  }
+`;
+
+const Menu = ({ DarkMode, setDarkMode }) => {
   return (
     <Container>
       <Wrapper>
         <Logo>
           <Img src={SdTube} />
-          Sd.Tube
+          SdVids
         </Logo>
         <Item>
           <HomeIcon />
@@ -75,6 +141,7 @@ const Menu = () => {
           <SubscriptionsIcon />
           Subscriptions
         </Item>
+        <Hr />
         <Item>
           <VideoLibraryIcon />
           Library
@@ -83,6 +150,16 @@ const Menu = () => {
           <HistoryIcon />
           History
         </Item>
+        <Hr />
+        <Login>
+          Sign In to like videos, comment, and subscribe.
+          <Button>
+            <AccountCircleOutlinedIcon />
+            Sign In
+          </Button>
+        </Login>
+        <Hr />
+        <Title>Best of SdVids</Title>
         <Item>
           <MusicNoteIcon />
           Music
@@ -107,6 +184,7 @@ const Menu = () => {
           <LiveTvIcon />
           Live
         </Item>
+        <Hr />
         <Item>
           <SettingsIcon />
           Settings
@@ -119,7 +197,7 @@ const Menu = () => {
           <HelpIcon />
           Help
         </Item>
-        <Item>
+        <Item onClick={() => setDarkMode(!DarkMode)}>
           <LightModeIcon />
           Light Mode
         </Item>
