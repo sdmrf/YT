@@ -32,7 +32,6 @@ const Container = styled.div`
   align-items: center;
   position: sticky;
   top: 0;
-  padding : 15px 0;
 `;
 const Wrapper = styled.div`
   padding: 18px 26px;
