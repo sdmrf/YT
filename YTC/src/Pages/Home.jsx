@@ -1,16 +1,23 @@
-import styled from 'styled-components'
-import Card from '../Components/Card'
+import styled from "styled-components";
+import Card from "../Components/Card";
 
-const Container = styled.div``
-
-
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+`;
 
 const Home = () => {
-  return (
-    <Container>
-        <Card />
-    </Container>
-  )
-}
+  const numberOfCards = 40; // Adjust the number of cards you want
 
-export default Home
+  const cards = [];
+  for (let i = 0; i < numberOfCards; i++) {
+    cards.push(<Card key={i} />);
+  }
+
+  return <Container>{cards}</Container>;
+};
+
+export default Home;

@@ -76,7 +76,7 @@ const Button = styled.button`
   font-size: 12px;
 
   &:hover {
-    background-color: #3ea6ff;
+    background-color: rgba(255, 255, 255, 0.2);;
     color: white;
   }
 `;

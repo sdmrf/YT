@@ -3,7 +3,7 @@ export const DarkTheme = {
   LightBgColor: "#282828",
   Color: "#fff",
   Text: "#fff",
-  TextLight: "#aaaaa",
+  TextLight: "#aaaaaa",
   Soft: "#373737",
 };
 

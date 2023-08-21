@@ -1,7 +1,13 @@
+import styled from 'styled-components'
+
+const Container = styled.div``
+
 
 const Video = () => {
   return (
-    <div>Video</div>
+    <Container>
+        Video
+    </Container>
   )
 }
 
