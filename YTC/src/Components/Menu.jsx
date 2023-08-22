@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 //Imports
 import SdTube from "../Images/youtube.svg";
@@ -16,8 +17,8 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import ReportIcon from "@mui/icons-material/Report";
 import HelpIcon from "@mui/icons-material/Help";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import SportsMotorsportsIcon from "@mui/icons-material/SportsMotorsports";
-
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 
 //Styles
@@ -71,8 +72,7 @@ const Title = styled.h2`
   font-weight: bold;
   margin-bottom: 10px;
   color: ${({ theme }) => theme.TextLight};
-  
-`
+`;
 
 const Hr = styled.hr`
   margin: 10px 0px;
@@ -125,10 +125,12 @@ const Menu = ({ DarkMode, setDarkMode }) => {
   return (
     <Container>
       <Wrapper>
+      <Link to="/" style = {{textDecoration: "none", color: "inherit"}}>
         <Logo>
           <Img src={SdTube} />
           SdVids
         </Logo>
+        </Link>
         <Item>
           <HomeIcon />
           Home
@@ -158,6 +160,7 @@ const Menu = ({ DarkMode, setDarkMode }) => {
             Sign In
           </Button>
         </Login>
+
         <Hr />
         <Title>Best of SdVids</Title>
         <Item>
@@ -198,8 +201,8 @@ const Menu = ({ DarkMode, setDarkMode }) => {
           Help
         </Item>
         <Item onClick={() => setDarkMode(!DarkMode)}>
-          <LightModeIcon />
-          Light Mode
+          {DarkMode ? <LightModeIcon /> : <DarkModeIcon /> }
+          {DarkMode ? "Light Mode" : "Dark Mode"}
         </Item>
       </Wrapper>
     </Container>

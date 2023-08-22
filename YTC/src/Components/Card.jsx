@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -54,6 +55,7 @@ const ChannelImg = styled.img`
 
 const Card = () => {
   return (
+    <Link to="/video/1" style={{textDecoration: "none", color: "inherit"}}>
     <Container>
       <Image src="https://i.ytimg.com/vi/2Vv-BfVoq4g/maxresdefault.jpg" />
       <Info>
@@ -65,6 +67,7 @@ const Card = () => {
         </Texts>
       </Info>
     </Container>
+    </Link>
   );
 };
 

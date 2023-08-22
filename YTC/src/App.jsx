@@ -6,12 +6,11 @@ import Navbar from "./Components/Navbar";
 import { DarkTheme, LightTheme } from "./Utils/Themes";
 import { useState } from "react";
 
-import {
-  RouterProvider,
-  createBrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Home from "./Pages/Home";
 import Video from "./Pages/Video";
+import SignIn from "./Pages/SignIn";
 
 //Styles
 const Container = styled.div`
@@ -29,18 +28,7 @@ const Wrapper = styled.div`
 
 // Main
 
-
 //Routes
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/video/:id",
-    element: <Video />,
-  },
-]);
 
 const App = () => {
   const [DarkMode, setDarkMode] = useState(true);
@@ -48,13 +36,23 @@ const App = () => {
   return (
     <ThemeProvider theme={DarkMode ? DarkTheme : LightTheme}>
       <Container>
-        <Menu setDarkMode={setDarkMode} DarkMode={DarkMode} />
-        <Main>
-          <Navbar />
-          <Wrapper>
-            <RouterProvider router={router} />
-          </Wrapper>
-        </Main>
+        <BrowserRouter>
+          <Menu setDarkMode={setDarkMode} DarkMode={DarkMode} />
+          <Main>
+            <Navbar />
+            <Wrapper>
+              <Routes>
+                <Route path="/">
+                  <Route index element={<Home />} />
+                  <Route path="signin" element={<SignIn />} />
+                  <Route path="video">
+                    <Route path=":id" element={<Video />} />
+                  </Route>
+                </Route>
+              </Routes>
+            </Wrapper>
+          </Main>
+        </BrowserRouter>
       </Container>
     </ThemeProvider>
   );
